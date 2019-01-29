@@ -34,7 +34,7 @@ class Formulairepartiel extends Component {
         {
           label: "Oui",
           onClick: () =>
-            Axios.post("/api/partiels", this.state)
+            Axios.post(`${REACT_APP_API}/api/partiels`, this.state)
               .then(response => {
                 this.props.pageChangeSub(
                   "EditAction",
@@ -69,7 +69,7 @@ class Formulairepartiel extends Component {
         {
           label: "Oui",
           onClick: () =>
-            Axios.put(`/api/partiels/${id}`, this.state)
+            Axios.put(`${REACT_APP_API}/api/partiels/${id}`, this.state)
               .then(response => {
                 this.props.pageChangeSub(
                   "EditAction",
@@ -96,7 +96,7 @@ class Formulairepartiel extends Component {
   componentDidMount() {
     const partielId = this.props.partielId;
     const factureId = this.props.facture;
-    Axios.get("/api/partiels")
+    Axios.get(`${REACT_APP_API}/api/partiels`)
       .then(response => {
         this.setState({
           // returns target partiel

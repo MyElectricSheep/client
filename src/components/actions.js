@@ -35,7 +35,7 @@ class Actions extends Component {
   };
 
   componentDidMount() {
-    Axios.get("/api/creanciers")
+    Axios.get(`${REACT_APP_API}/api/creanciers`)
       .then(response => {
         this.setState({
           // returns all creanciers
@@ -52,7 +52,7 @@ class Actions extends Component {
       .catch(error => {
         console.log(error);
       });
-    Axios.get("/api/debiteurs")
+    Axios.get(`${REACT_APP_API}/api/debiteurs`)
       .then(response => {
         this.setState({
           // returns all debiteurs
@@ -75,7 +75,7 @@ class Actions extends Component {
       this.state.idDebiteurSelected !== 0 &&
       this.state.isLoaded === false
     ) {
-      Axios.get("/api/actions")
+      Axios.get(`${REACT_APP_API}/api/actions`)
         .then(response => {
           this.setState({
             // returns all actions
@@ -116,7 +116,7 @@ class Actions extends Component {
         {
           label: "Oui",
           onClick: () =>
-            Axios.post("/api/actions", {
+            Axios.post(`${REACT_APP_API}/api/actions`, {
               nom_action,
               creancierId,
               debiteurId,

@@ -22,7 +22,7 @@ class Actions extends Component {
   };
 
   componentDidMount() {
-    Axios.get("/api/creanciers")
+    Axios.get(`${REACT_APP_API}/api/creanciers`)
       .then(response => {
         this.setState({
           // returns all creanciers
@@ -39,7 +39,7 @@ class Actions extends Component {
       .catch(error => {
         console.log(error);
       });
-    Axios.get("/api/debiteurs")
+    Axios.get(`${REACT_APP_API}/api/debiteurs`)
       .then(response => {
         this.setState({
           // returns all debiteurs
