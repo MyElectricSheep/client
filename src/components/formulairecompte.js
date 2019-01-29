@@ -33,7 +33,7 @@ class Formulairecompte extends Component {
         "content-type": "multipart/form-data"
       }
     };
-    Axios.post("http://localhost:4848/dashboard/signature", formData, config)
+    Axios.post("/dashboard/signature", formData, config)
       .then(response => {
         alert("Le fichier a été téléchargé avec succès");
         console.log(response);
@@ -53,7 +53,7 @@ class Formulairecompte extends Component {
         "content-type": "multipart/form-data"
       }
     };
-    Axios.post("http://localhost:4848/dashboard/entete", formData, config)
+    Axios.post("/dashboard/entete", formData, config)
       .then(response => {
         alert("Le fichier a été téléchargé avec succès");
       })
@@ -68,7 +68,7 @@ class Formulairecompte extends Component {
   };
 
   // reloadNow = () => {
-  //   Axios.get("http://www.localhost:4848/api/cabinet")
+  //   Axios.get("/api/cabinet")
   //     .then(response => {
   //       this.setState({
   //         data: response.data[0]
@@ -89,7 +89,7 @@ class Formulairecompte extends Component {
         {
           label: "Oui",
           onClick: () =>
-            Axios.put(`http://localhost:4848/api/cabinet/${myId}`, this.state)
+            Axios.put(`/api/cabinet/${myId}`, this.state)
               .then(response => {
                 // this.reloadNow(myId);
                 this.props.pageChangeSub("Compte");
@@ -116,7 +116,7 @@ class Formulairecompte extends Component {
   };
 
   componentDidMount() {
-    Axios.get("http://www.localhost:4848/api/cabinet")
+    Axios.get("/api/cabinet")
       .then(response => {
         this.setState({
           data: response.data[0]

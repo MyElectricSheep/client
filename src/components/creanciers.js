@@ -35,7 +35,7 @@ class Creanciers extends Component {
         {
           label: "Oui",
           onClick: () =>
-            Axios.put(`http://localhost:4848/api/creanciers/${myId}`, {
+            Axios.put(`/api/creanciers/${myId}`, {
               active: "false"
             })
               .then(response => {
@@ -85,7 +85,7 @@ class Creanciers extends Component {
   };
 
   componentDidMount() {
-    Axios.get("http://localhost:4848/api/creanciers")
+    Axios.get("/api/creanciers")
       .then(response => {
         this.setState({
           // returns all creanciers

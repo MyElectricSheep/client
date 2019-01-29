@@ -47,7 +47,7 @@ class Formulairedebiteur extends Component {
           label: "Oui",
           onClick: () =>
             axios
-              .post("http://localhost:4848/api/debiteurs", this.state)
+              .post("/api/debiteurs", this.state)
               .then(response => {
                 this.props.pageChangeSub("Debiteurs");
                 this.props.history.push("/dashboard/debiteurs");
@@ -76,7 +76,7 @@ class Formulairedebiteur extends Component {
           label: "Oui",
           onClick: () =>
             axios
-              .put(`http://localhost:4848/api/debiteurs/${id}`, this.state)
+              .put(`/api/debiteurs/${id}`, this.state)
               .then(response => {
                 this.props.pageChangeSub("Debiteurs");
                 this.props.history.push("/dashboard/debiteurs");
@@ -114,7 +114,7 @@ class Formulairedebiteur extends Component {
   componentDidMount() {
     const debiteurId = this.props.debiteurId;
     axios
-      .get("http://localhost:4848/api/debiteurs")
+      .get("/api/debiteurs")
       .then(response => {
         this.setState({
           // returns target debiteur

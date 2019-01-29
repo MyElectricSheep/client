@@ -87,7 +87,7 @@ class Formulairefacture extends Component {
           label: "Oui",
           onClick: () =>
             axios
-              .post("http://localhost:4848/api/factures", this.state)
+              .post("/api/factures", this.state)
               .then(response => {
                 this.props.pageChangeSub(
                   "EditAction",
@@ -123,7 +123,7 @@ class Formulairefacture extends Component {
           label: "Oui",
           onClick: () =>
             axios
-              .put(`http://localhost:4848/api/factures/${id}`, this.state)
+              .put(`/api/factures/${id}`, this.state)
               .then(response => {
                 this.props.pageChangeSub(
                   "EditAction",
@@ -150,7 +150,7 @@ class Formulairefacture extends Component {
   componentDidMount() {
     const id = this.props.facture;
     axios
-      .get("http://localhost:4848/api/factures")
+      .get("/api/factures")
       .then(response => {
         this.setState({
           // returns all factures whose active status is true

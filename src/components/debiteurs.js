@@ -35,7 +35,7 @@ class Debiteurs extends Component {
         {
           label: "Oui",
           onClick: () =>
-            Axios.put(`http://localhost:4848/api/debiteurs/${myId}`, {
+            Axios.put(`/api/debiteurs/${myId}`, {
               active: "false"
             })
               .then(response => {
@@ -84,7 +84,7 @@ class Debiteurs extends Component {
   };
 
   componentDidMount() {
-    Axios.get("http://localhost:4848/api/debiteurs")
+    Axios.get("/api/debiteurs")
       .then(response => {
         this.setState({
           // returns all debiteurs

@@ -19,7 +19,7 @@ class LoginPage extends React.Component {
   };
 
   componentDidMount() {
-    Axios.get("http://localhost:4848/api/cabinet/")
+    Axios.get("/api/cabinet/")
       .then(response => {
         this.setState({
           log: response.data[0].login,

@@ -35,7 +35,7 @@ class Acomptes extends Component {
         {
           label: "Oui",
           onClick: () =>
-            Axios.put(`http://localhost:4848/api/acomptes/${myId}`, {
+            Axios.put(`/api/acomptes/${myId}`, {
               active: "false"
             })
               .then(response => {
@@ -55,7 +55,7 @@ class Acomptes extends Component {
   };
 
   componentDidMount() {
-    Axios.get("http://localhost:4848/api/acomptes")
+    Axios.get("/api/acomptes")
       .then(response => {
         this.setState({
           // returns all acomptes

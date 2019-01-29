@@ -52,7 +52,7 @@ class Formulairecreancier extends Component {
           label: "Oui",
           onClick: () =>
             axios
-              .post("http://localhost:4848/api/creanciers", this.state)
+              .post("/api/creanciers", this.state)
               .then(response => {
                 this.props.pageChangeSub("Creanciers");
                 this.props.history.push("/dashboard/creanciers");
@@ -82,7 +82,7 @@ class Formulairecreancier extends Component {
           label: "Oui",
           onClick: () =>
             axios
-              .put(`http://localhost:4848/api/creanciers/${id}`, this.state)
+              .put(`/api/creanciers/${id}`, this.state)
               .then(response => {
                 this.props.pageChangeSub("Creanciers");
                 this.props.history.push("/dashboard/creanciers");
@@ -121,7 +121,7 @@ class Formulairecreancier extends Component {
   componentDidMount() {
     const creancierId = this.props.creancierId;
     axios
-      .get("http://localhost:4848/api/creanciers")
+      .get("/api/creanciers")
       .then(response => {
         this.setState({
           // returns target creancier

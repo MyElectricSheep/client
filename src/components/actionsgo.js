@@ -22,7 +22,7 @@ class Actions extends Component {
   };
 
   componentDidMount() {
-    Axios.get("http://localhost:4848/api/creanciers")
+    Axios.get("/api/creanciers")
       .then(response => {
         this.setState({
           // returns all creanciers
@@ -39,7 +39,7 @@ class Actions extends Component {
       .catch(error => {
         console.log(error);
       });
-    Axios.get("http://localhost:4848/api/debiteurs")
+    Axios.get("/api/debiteurs")
       .then(response => {
         this.setState({
           // returns all debiteurs

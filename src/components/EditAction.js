@@ -235,10 +235,10 @@ class EditAction extends Component {
     let debiteur_filename = this.props.debiteur;
     let nom = `${today_file} - Mise en demeure - ${creancier_filename} contre ${debiteur_filename}.docx`;
     Axios.get(
-      `http://localhost:4848/api/documents/createMed/${this.props.actionId}`
-    ).then(data => window.open(`http://localhost:4848/documents/${nom}`));
-    Axios.put(`http://localhost:4848/api/actions/${this.props.actionId}`, {
-      option_1: `http://localhost:4848/documents/${nom}`
+      `/api/documents/createMed/${this.props.actionId}`
+    ).then(data => window.open(`/documents/${nom}`));
+    Axios.put(`/api/actions/${this.props.actionId}`, {
+      option_1: `/documents/${nom}`
     });
   };
 
@@ -262,12 +262,12 @@ class EditAction extends Component {
     let debiteur_filename = this.props.debiteur;
     let nom = `${today_file} - Injonction de payer - ${creancier_filename} contre ${debiteur_filename}.docx`;
     Axios.get(
-      `http://localhost:4848/api/documents/createInjonction/${
+      `/api/documents/createInjonction/${
         this.props.actionId
       }`
-    ).then(data => window.open(`http://localhost:4848/documents/${nom}`));
-    Axios.put(`http://localhost:4848/api/actions/${this.props.actionId}`, {
-      option_2: `http://localhost:4848/documents/${nom}`
+    ).then(data => window.open(`/documents/${nom}`));
+    Axios.put(`/api/actions/${this.props.actionId}`, {
+      option_2: `/documents/${nom}`
     });
   };
 
@@ -291,10 +291,10 @@ class EditAction extends Component {
     let debiteur_filename = this.props.debiteur;
     let nom = `${today_file} - Tableau de calcul des intérêts - ${creancier_filename} contre ${debiteur_filename}.docx`;
     Axios.get(
-      `http://localhost:4848/api/documents/createRecap/${this.props.actionId}`
-    ).then(data => window.open(`http://localhost:4848/documents/${nom}`));
-    Axios.put(`http://localhost:4848/api/actions/${this.props.actionId}`, {
-      option_3: `http://localhost:4848/documents/${nom}`
+      `/api/documents/createRecap/${this.props.actionId}`
+    ).then(data => window.open(`/documents/${nom}`));
+    Axios.put(`/api/actions/${this.props.actionId}`, {
+      option_3: `/documents/${nom}`
     });
   };
 
@@ -333,7 +333,7 @@ class EditAction extends Component {
         {
           label: "Oui",
           onClick: () =>
-            Axios.put(`http://localhost:4848/api/${type}/${id}`, {
+            Axios.put(`/api/${type}/${id}`, {
               active: "false"
             })
               .then(response => {
@@ -603,7 +603,7 @@ class EditAction extends Component {
           {
             label: "Oui",
             onClick: () =>
-              Axios.put(`http://localhost:4848/api/actions/${myActionId}`, {
+              Axios.put(`/api/actions/${myActionId}`, {
                 honoraires: this.state.honoraires,
                 option_ttc_hono: this.state.TTCHono,
                 option_ttc_factures: this.state.TTC,
@@ -969,7 +969,7 @@ class EditAction extends Component {
   };
 
   componentDidMount() {
-    Axios.get("http://localhost:4848/api/actions")
+    Axios.get("/api/actions")
       .then(response => {
         this.setState({
           actionFiltered: response.data.filter(
@@ -981,7 +981,7 @@ class EditAction extends Component {
       .catch(error => {
         console.log(error);
       });
-    Axios.get("http://localhost:4848/api/factures")
+    Axios.get("/api/factures")
       .then(response => {
         this.setState({
           facturesFiltered: response.data
@@ -1002,7 +1002,7 @@ class EditAction extends Component {
     //     }
     //   }
     // };
-    Axios.get("http://localhost:4848/api/acomptes")
+    Axios.get("/api/acomptes")
       .then(response => {
         this.setState({
           acomptesFiltered: response.data.filter(acompte => acompte.active)
@@ -1012,7 +1012,7 @@ class EditAction extends Component {
       .catch(error => {
         console.log(error);
       });
-    Axios.get("http://localhost:4848/api/avoirs")
+    Axios.get("/api/avoirs")
       .then(response => {
         this.setState({
           avoirsFiltered: response.data.filter(avoir => avoir.active),
@@ -1023,7 +1023,7 @@ class EditAction extends Component {
       .catch(error => {
         console.log(error);
       });
-    Axios.get("http://localhost:4848/api/partiels")
+    Axios.get("/api/partiels")
       .then(response => {
         this.setState({
           partielsFiltered: response.data.filter(partiel => partiel.active)
@@ -1033,7 +1033,7 @@ class EditAction extends Component {
       .catch(error => {
         console.log(error);
       });
-    Axios.get(`http://localhost:4848/api/actions/${this.props.actionId}`)
+    Axios.get(`/api/actions/${this.props.actionId}`)
       .then(response => {
         this.setState({
           currentActionWithAllInfo: response.data
@@ -1246,7 +1246,7 @@ class EditAction extends Component {
       this.state.isUpdated === false &&
       this.state.actionFiltered !== undefined
     ) {
-      Axios.get("http://localhost:4848/api/factures")
+      Axios.get("/api/factures")
         .then(response => {
           this.setState({
             facturesFiltered: response.data
@@ -1268,7 +1268,7 @@ class EditAction extends Component {
       //     }
       //   }
       // };
-      Axios.get("http://localhost:4848/api/acomptes")
+      Axios.get("/api/acomptes")
         .then(response => {
           this.setState({
             acomptesFiltered: response.data.filter(acompte => acompte.active),
@@ -1279,7 +1279,7 @@ class EditAction extends Component {
         .catch(error => {
           console.log(error);
         });
-      Axios.get("http://localhost:4848/api/avoirs")
+      Axios.get("/api/avoirs")
         .then(response => {
           this.setState({
             avoirsFiltered: response.data.filter(avoir => avoir.active),
@@ -1291,7 +1291,7 @@ class EditAction extends Component {
         .catch(error => {
           console.log(error);
         });
-      Axios.get("http://localhost:4848/api/partiels")
+      Axios.get("/api/partiels")
         .then(response => {
           this.setState({
             partielsFiltered: response.data.filter(partiel => partiel.active)
@@ -1302,7 +1302,7 @@ class EditAction extends Component {
           console.log(error);
         });
       Axios.get(
-        `http://localhost:4848/api/actions/${this.props.actionId}`
+        `/api/actions/${this.props.actionId}`
       ).then(response => {
         this.setState({
           currentActionWithAllInfo: response.data

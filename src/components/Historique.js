@@ -19,7 +19,7 @@ class Historique extends React.Component {
   };
 
   componentDidMount() {
-    Axios.get("http://localhost:4848/api/actions")
+    Axios.get("/api/actions")
       .then(response => {
         this.setState({
           actions: response.data,
@@ -33,7 +33,7 @@ class Historique extends React.Component {
       .catch(error => {
         console.log(error);
       });
-    Axios.get("http://localhost:4848/api/creanciers")
+    Axios.get("/api/creanciers")
       .then(response => {
         this.setState({
           creanciers: response.data
@@ -42,7 +42,7 @@ class Historique extends React.Component {
       .catch(error => {
         console.log(error);
       });
-    Axios.get("http://localhost:4848/api/debiteurs")
+    Axios.get("/api/debiteurs")
       .then(response => {
         this.setState({
           debiteurs: response.data
@@ -149,11 +149,11 @@ class Historique extends React.Component {
           {
             label: "Oui",
             onClick: () =>
-              Axios.put(`http://localhost:4848/api/actions/${id}`, {
+              Axios.put(`/api/actions/${id}`, {
                 active: "true"
               })
                 .then(response => {
-                  Axios.get("http://localhost:4848/api/actions")
+                  Axios.get("/api/actions")
                     .then(response => {
                       this.setState({
                         actions: response.data,
@@ -190,7 +190,7 @@ class Historique extends React.Component {
           {
             label: "Oui",
             onClick: () =>
-              Axios.put(`http://localhost:4848/api/actions/${id}`, {
+              Axios.put(`/api/actions/${id}`, {
                 active: "false"
               })
                 .then(response => {
@@ -200,7 +200,7 @@ class Historique extends React.Component {
                   // this.setState({
                   //   actionsActive: myActive
                   // });
-                  Axios.get("http://localhost:4848/api/actions")
+                  Axios.get("/api/actions")
                     .then(response => {
                       this.setState({
                         actions: response.data,
