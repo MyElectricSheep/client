@@ -35,7 +35,7 @@ class Debiteurs extends Component {
         {
           label: "Oui",
           onClick: () =>
-            Axios.put(`${REACT_APP_API}/api/debiteurs/${myId}`, {
+            Axios.put(`${process.env.REACT_APP_API}/api/debiteurs/${myId}`, {
               active: "false"
             })
               .then(response => {
@@ -84,7 +84,7 @@ class Debiteurs extends Component {
   };
 
   componentDidMount() {
-    Axios.get(`${REACT_APP_API}/api/debiteurs`)
+    Axios.get(`${process.env.REACT_APP_API}/api/debiteurs`)
       .then(response => {
         this.setState({
           // returns all debiteurs

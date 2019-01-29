@@ -35,7 +35,7 @@ class Creanciers extends Component {
         {
           label: "Oui",
           onClick: () =>
-            Axios.put(`${REACT_APP_API}/api/creanciers/${myId}`, {
+            Axios.put(`${process.env.REACT_APP_API}/api/creanciers/${myId}`, {
               active: "false"
             })
               .then(response => {
@@ -85,7 +85,7 @@ class Creanciers extends Component {
   };
 
   componentDidMount() {
-    Axios.get(`${REACT_APP_API}/api/creanciers`)
+    Axios.get(`${process.env.REACT_APP_API}/api/creanciers`)
       .then(response => {
         this.setState({
           // returns all creanciers

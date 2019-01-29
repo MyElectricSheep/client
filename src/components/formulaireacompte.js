@@ -34,7 +34,7 @@ class Formulaireacompte extends Component {
         {
           label: "Oui",
           onClick: () =>
-            Axios.post(`${REACT_APP_API}/api/acomptes`, this.state)
+            Axios.post(`${process.env.REACT_APP_API}/api/acomptes`, this.state)
               .then(response => {
                 this.props.pageChangeSub(
                   "EditAction",
@@ -69,7 +69,7 @@ class Formulaireacompte extends Component {
         {
           label: "Oui",
           onClick: () =>
-            Axios.put(`${REACT_APP_API}/api/acomptes/${id}`, this.state)
+            Axios.put(`${process.env.REACT_APP_API}/api/acomptes/${id}`, this.state)
               .then(response => {
                 this.props.pageChangeSub(
                   "EditAction",
@@ -96,7 +96,7 @@ class Formulaireacompte extends Component {
   componentDidMount() {
     const acompteId = this.props.acompteId;
     const factureId = this.props.facture;
-    Axios.get(`${REACT_APP_API}/api/acomptes`)
+    Axios.get(`${process.env.REACT_APP_API}/api/acomptes`)
       .then(response => {
         this.setState({
           // returns target acompte

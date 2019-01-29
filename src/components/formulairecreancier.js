@@ -52,7 +52,7 @@ class Formulairecreancier extends Component {
           label: "Oui",
           onClick: () =>
             axios
-              .post(`${REACT_APP_API}/api/creanciers`, this.state)
+              .post(`${process.env.REACT_APP_API}/api/creanciers`, this.state)
               .then(response => {
                 this.props.pageChangeSub("Creanciers");
                 this.props.history.push("/dashboard/creanciers");
@@ -82,7 +82,7 @@ class Formulairecreancier extends Component {
           label: "Oui",
           onClick: () =>
             axios
-              .put(`${REACT_APP_API}/api/creanciers/${id}`, this.state)
+              .put(`${process.env.REACT_APP_API}/api/creanciers/${id}`, this.state)
               .then(response => {
                 this.props.pageChangeSub("Creanciers");
                 this.props.history.push("/dashboard/creanciers");
@@ -121,7 +121,7 @@ class Formulairecreancier extends Component {
   componentDidMount() {
     const creancierId = this.props.creancierId;
     axios
-      .get(`${REACT_APP_API}/api/creanciers`)
+      .get(`${process.env.REACT_APP_API}/api/creanciers`)
       .then(response => {
         this.setState({
           // returns target creancier

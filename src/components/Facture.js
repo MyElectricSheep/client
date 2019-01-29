@@ -35,7 +35,7 @@ class Factures extends Component {
         {
           label: "Oui",
           onClick: () =>
-            Axios.put(`${REACT_APP_API}/api/factures/${myId}`, {
+            Axios.put(`${process.env.REACT_APP_API}/api/factures/${myId}`, {
               active: "false"
             })
               .then(response => {
@@ -55,7 +55,7 @@ class Factures extends Component {
   };
 
   componentDidMount() {
-    Axios.get(`${REACT_APP_API}/api/factures`)
+    Axios.get(`${process.env.REACT_APP_API}/api/factures`)
       .then(response => {
         this.setState({
           // returns all factures

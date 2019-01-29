@@ -68,7 +68,7 @@ class Formulairecompte extends Component {
   };
 
   // reloadNow = () => {
-  //   Axios.get(`${REACT_APP_API}/api/cabinet`)
+  //   Axios.get(`${process.env.REACT_APP_API}/api/cabinet`)
   //     .then(response => {
   //       this.setState({
   //         data: response.data[0]
@@ -89,7 +89,7 @@ class Formulairecompte extends Component {
         {
           label: "Oui",
           onClick: () =>
-            Axios.put(`${REACT_APP_API}/api/cabinet/${myId}`, this.state)
+            Axios.put(`${process.env.REACT_APP_API}/api/cabinet/${myId}`, this.state)
               .then(response => {
                 // this.reloadNow(myId);
                 this.props.pageChangeSub("Compte");
@@ -116,7 +116,7 @@ class Formulairecompte extends Component {
   };
 
   componentDidMount() {
-    Axios.get(`${REACT_APP_API}/api/cabinet`)
+    Axios.get(`${process.env.REACT_APP_API}/api/cabinet`)
       .then(response => {
         this.setState({
           data: response.data[0]

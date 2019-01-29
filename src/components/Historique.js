@@ -20,7 +20,7 @@ class Historique extends React.Component {
   };
 
   componentDidMount() {
-    Axios.get(`${REACT_APP_API}/api/actions`)
+    Axios.get(`${process.env.REACT_APP_API}/api/actions`)
       .then(response => {
         this.setState({
           actions: response.data,
@@ -34,7 +34,7 @@ class Historique extends React.Component {
       .catch(error => {
         console.log(error);
       });
-    Axios.get(`${REACT_APP_API}/api/creanciers`)
+    Axios.get(`${process.env.REACT_APP_API}/api/creanciers`)
       .then(response => {
         this.setState({
           creanciers: response.data
@@ -43,7 +43,7 @@ class Historique extends React.Component {
       .catch(error => {
         console.log(error);
       });
-    Axios.get(`${REACT_APP_API}/api/debiteurs`)
+    Axios.get(`${process.env.REACT_APP_API}/api/debiteurs`)
       .then(response => {
         this.setState({
           debiteurs: response.data
@@ -150,11 +150,11 @@ class Historique extends React.Component {
           {
             label: "Oui",
             onClick: () =>
-              Axios.put(`${REACT_APP_API}/api/actions/${id}`, {
+              Axios.put(`${process.env.REACT_APP_API}/api/actions/${id}`, {
                 active: "true"
               })
                 .then(response => {
-                  Axios.get(`${REACT_APP_API}/api/actions`)
+                  Axios.get(`${process.env.REACT_APP_API}/api/actions`)
                     .then(response => {
                       this.setState({
                         actions: response.data,
@@ -191,7 +191,7 @@ class Historique extends React.Component {
           {
             label: "Oui",
             onClick: () =>
-              Axios.put(`${REACT_APP_API}/api/actions/${id}`, {
+              Axios.put(`${process.env.REACT_APP_API}/api/actions/${id}`, {
                 active: "false"
               })
                 .then(response => {
@@ -201,7 +201,7 @@ class Historique extends React.Component {
                   // this.setState({
                   //   actionsActive: myActive
                   // });
-                  Axios.get(`${REACT_APP_API}/api/actions`)
+                  Axios.get(`${process.env.REACT_APP_API}/api/actions`)
                     .then(response => {
                       this.setState({
                         actions: response.data,

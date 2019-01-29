@@ -84,7 +84,7 @@ class Compte extends Component {
   };
 
   reloadNow = () => {
-    Axios.get(`${REACT_APP_API}/api/cabinet`)
+    Axios.get(`${process.env.REACT_APP_API}/api/cabinet`)
       .then(response => {
         this.setState({
           data: response.data[0]
@@ -105,7 +105,7 @@ class Compte extends Component {
         {
           label: "Oui",
           onClick: () =>
-            Axios.put(`${REACT_APP_API}/api/cabinet/${myId}`, this.state)
+            Axios.put(`${process.env.REACT_APP_API}/api/cabinet/${myId}`, this.state)
               .then(response => {
                 this.reloadNow(myId);
                 alert(`Vos informations ont bien été modifiées.`);
@@ -130,7 +130,7 @@ class Compte extends Component {
   };
 
   componentDidMount() {
-    Axios.get(`${REACT_APP_API}/api/cabinet`)
+    Axios.get(`${process.env.REACT_APP_API}/api/cabinet`)
       .then(response => {
         this.setState({
           data: response.data[0]

@@ -3,6 +3,7 @@ import "./App.css";
 import { Switch, Route } from "react-router-dom";
 import dashboard from "./components/dashboard";
 import Login from "./components/LoginPage";
+require("dotenv").config();
 
 class App extends Component {
   render() {

@@ -34,7 +34,7 @@ class FormulaireAvoirs extends Component {
         {
           label: "Oui",
           onClick: () =>
-            Axios.post(`${REACT_APP_API}/api/avoirs`, this.state)
+            Axios.post(`${process.env.REACT_APP_API}/api/avoirs`, this.state)
               .then(response => {
                 this.props.pageChangeSub(
                   "EditAction",
@@ -68,7 +68,7 @@ class FormulaireAvoirs extends Component {
         {
           label: "Oui",
           onClick: () =>
-            Axios.put(`${REACT_APP_API}/api/avoirs/${id}`, this.state)
+            Axios.put(`${process.env.REACT_APP_API}/api/avoirs/${id}`, this.state)
               .then(response => {
                 this.props.pageChangeSub(
                   "EditAction",
@@ -95,7 +95,7 @@ class FormulaireAvoirs extends Component {
   componentDidMount() {
     const avoirId = this.props.avoirId;
     const factureId = this.props.facture;
-    Axios.get(`${REACT_APP_API}/api/avoirs`)
+    Axios.get(`${process.env.REACT_APP_API}/api/avoirs`)
       .then(response => {
         this.setState({
           // returns target avoir

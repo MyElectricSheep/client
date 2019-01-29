@@ -19,7 +19,7 @@ class LoginPage extends React.Component {
   };
 
   componentDidMount() {
-    Axios.get(`${REACT_APP_API}/api/cabinet/`)
+    Axios.get(`${process.env.REACT_APP_API}/api/cabinet/`)
       .then(response => {
         this.setState({
           log: response.data[0].login,

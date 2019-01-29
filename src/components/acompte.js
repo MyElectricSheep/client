@@ -35,7 +35,7 @@ class Acomptes extends Component {
         {
           label: "Oui",
           onClick: () =>
-            Axios.put(`${REACT_APP_API}/api/acomptes/${myId}`, {
+            Axios.put(`${process.env.REACT_APP_API}/api/acomptes/${myId}`, {
               active: "false"
             })
               .then(response => {
@@ -55,7 +55,7 @@ class Acomptes extends Component {
   };
 
   componentDidMount() {
-    Axios.get(`${REACT_APP_API}/api/acomptes`)
+    Axios.get(`${process.env.REACT_APP_API}/api/acomptes`)
       .then(response => {
         this.setState({
           // returns all acomptes

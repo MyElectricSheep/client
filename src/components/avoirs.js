@@ -35,7 +35,7 @@ class Avoirs extends Component {
         {
           label: "Oui",
           onClick: () =>
-            Axios.put(`${REACT_APP_API}/api/avoirs/${myId}`, {
+            Axios.put(`${process.env.REACT_APP_API}/api/avoirs/${myId}`, {
               active: "false"
             })
               .then(response => {
@@ -55,7 +55,7 @@ class Avoirs extends Component {
   };
 
   componentDidMount() {
-    Axios.get(`${REACT_APP_API}/api/avoirs`)
+    Axios.get(`${process.env.REACT_APP_API}/api/avoirs`)
       .then(response => {
         this.setState({
           // returns all avoirs
