@@ -239,7 +239,7 @@ class EditAction extends Component {
         this.props.actionId
       }`
     ).then(data =>
-      window.open(`${process.env.REACT_APP_API}/documents/${nom}`)
+      window.open(`https://arigoback.herokuapp.com/documents/${nom}`)
     );
     Axios.put(
       `${process.env.REACT_APP_API}/api/actions/${this.props.actionId}`,
@@ -273,7 +273,7 @@ class EditAction extends Component {
         this.props.actionId
       }`
     ).then(data =>
-      window.open(`${process.env.REACT_APP_API}/documents/${nom}`)
+      window.open(`https://arigoback.herokuapp.com/documents/${nom}`)
     );
     Axios.put(
       `${process.env.REACT_APP_API}/api/actions/${this.props.actionId}`,
@@ -307,7 +307,7 @@ class EditAction extends Component {
         this.props.actionId
       }`
     ).then(data =>
-      window.open(`${process.env.REACT_APP_API}/documents/${nom}`)
+      window.open(`https://arigoback.herokuapp.com/documents/${nom}`)
     );
     Axios.put(
       `${process.env.REACT_APP_API}/api/actions/${this.props.actionId}`,
