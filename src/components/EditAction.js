@@ -235,11 +235,18 @@ class EditAction extends Component {
     let debiteur_filename = this.props.debiteur;
     let nom = `${today_file} - Mise en demeure - ${creancier_filename} contre ${debiteur_filename}.docx`;
     Axios.get(
-      `${process.env.REACT_APP_API}/api/documents/createMed/${this.props.actionId}`
-    ).then(data => window.open(`/documents/${nom}`));
-    Axios.put(`${process.env.REACT_APP_API}/api/actions/${this.props.actionId}`, {
-      option_1: `/documents/${nom}`
-    });
+      `${process.env.REACT_APP_API}/api/documents/createMed/${
+        this.props.actionId
+      }`
+    ).then(data =>
+      window.open(`${process.env.REACT_APP_API}/documents/${nom}`)
+    );
+    Axios.put(
+      `${process.env.REACT_APP_API}/api/actions/${this.props.actionId}`,
+      {
+        option_1: `/documents/${nom}`
+      }
+    );
   };
 
   handleInjonction = () => {
@@ -262,11 +269,18 @@ class EditAction extends Component {
     let debiteur_filename = this.props.debiteur;
     let nom = `${today_file} - Injonction de payer - ${creancier_filename} contre ${debiteur_filename}.docx`;
     Axios.get(
-      `${process.env.REACT_APP_API}/api/documents/createInjonction/${this.props.actionId}`
-    ).then(data => window.open(`/documents/${nom}`));
-    Axios.put(`${process.env.REACT_APP_API}/api/actions/${this.props.actionId}`, {
-      option_2: `/documents/${nom}`
-    });
+      `${process.env.REACT_APP_API}/api/documents/createInjonction/${
+        this.props.actionId
+      }`
+    ).then(data =>
+      window.open(`${process.env.REACT_APP_API}/documents/${nom}`)
+    );
+    Axios.put(
+      `${process.env.REACT_APP_API}/api/actions/${this.props.actionId}`,
+      {
+        option_2: `/documents/${nom}`
+      }
+    );
   };
 
   handleRecap = () => {
@@ -289,11 +303,18 @@ class EditAction extends Component {
     let debiteur_filename = this.props.debiteur;
     let nom = `${today_file} - Tableau de calcul des intérêts - ${creancier_filename} contre ${debiteur_filename}.docx`;
     Axios.get(
-      `${process.env.REACT_APP_API}/api/documents/createRecap/${this.props.actionId}`
-    ).then(data => window.open(`/documents/${nom}`));
-    Axios.put(`${process.env.REACT_APP_API}/api/actions/${this.props.actionId}`, {
-      option_3: `/documents/${nom}`
-    });
+      `${process.env.REACT_APP_API}/api/documents/createRecap/${
+        this.props.actionId
+      }`
+    ).then(data =>
+      window.open(`${process.env.REACT_APP_API}/documents/${nom}`)
+    );
+    Axios.put(
+      `${process.env.REACT_APP_API}/api/actions/${this.props.actionId}`,
+      {
+        option_3: `/documents/${nom}`
+      }
+    );
   };
 
   handleDelete = (id, denomination, type) => {
@@ -601,17 +622,20 @@ class EditAction extends Component {
           {
             label: "Oui",
             onClick: () =>
-              Axios.put(`${process.env.REACT_APP_API}/api/actions/${myActionId}`, {
-                honoraires: this.state.honoraires,
-                option_ttc_hono: this.state.TTCHono,
-                option_ttc_factures: this.state.TTC,
-                produits: this.state.produits,
-                services: this.state.services,
-                taux_interets: this.state.points,
-                date: this.state.date_fin,
-                calcul_solde_du: myFullCreanceHT, // full creance en HT
-                calcul_total_creance: myFullCreanceTTC // full creance en TTC
-              })
+              Axios.put(
+                `${process.env.REACT_APP_API}/api/actions/${myActionId}`,
+                {
+                  honoraires: this.state.honoraires,
+                  option_ttc_hono: this.state.TTCHono,
+                  option_ttc_factures: this.state.TTC,
+                  produits: this.state.produits,
+                  services: this.state.services,
+                  taux_interets: this.state.points,
+                  date: this.state.date_fin,
+                  calcul_solde_du: myFullCreanceHT, // full creance en HT
+                  calcul_total_creance: myFullCreanceTTC // full creance en TTC
+                }
+              )
                 .then(response => {
                   alert("Vos options ont bien été sauvegardées.");
                   console.log(response);
@@ -1299,13 +1323,13 @@ class EditAction extends Component {
         .catch(error => {
           console.log(error);
         });
-      Axios.get(`${process.env.REACT_APP_API}/api/actions/${this.props.actionId}`).then(
-        response => {
-          this.setState({
-            currentActionWithAllInfo: response.data
-          });
-        }
-      );
+      Axios.get(
+        `${process.env.REACT_APP_API}/api/actions/${this.props.actionId}`
+      ).then(response => {
+        this.setState({
+          currentActionWithAllInfo: response.data
+        });
+      });
     }
   }
 
