@@ -244,7 +244,7 @@ class EditAction extends Component {
     Axios.put(
       `${process.env.REACT_APP_API}/api/actions/${this.props.actionId}`,
       {
-        option_1: `/documents/${nom}`
+        option_1: `https://arigoback.herokuapp.com/documents/${nom}`
       }
     );
   };
@@ -278,7 +278,7 @@ class EditAction extends Component {
     Axios.put(
       `${process.env.REACT_APP_API}/api/actions/${this.props.actionId}`,
       {
-        option_2: `/documents/${nom}`
+        option_2: `https://arigoback.herokuapp.com/documents/${nom}`
       }
     );
   };
@@ -312,7 +312,7 @@ class EditAction extends Component {
     Axios.put(
       `${process.env.REACT_APP_API}/api/actions/${this.props.actionId}`,
       {
-        option_3: `/documents/${nom}`
+        option_3: `https://arigoback.herokuapp.com/documents/${nom}`
       }
     );
   };
