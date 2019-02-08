@@ -47,7 +47,7 @@ class Formulairedebiteur extends Component {
           label: "Oui",
           onClick: () =>
             axios
-              .post(`${process.env.REACT_APP_API}/api/debiteurs`, this.state)
+              .post("http://localhost:4848/api/debiteurs", this.state)
               .then(response => {
                 this.props.pageChangeSub("Debiteurs");
                 this.props.history.push("/dashboard/debiteurs");
@@ -76,7 +76,7 @@ class Formulairedebiteur extends Component {
           label: "Oui",
           onClick: () =>
             axios
-              .put(`${process.env.REACT_APP_API}/api/debiteurs/${id}`, this.state)
+              .put(`http://localhost:4848/api/debiteurs/${id}`, this.state)
               .then(response => {
                 this.props.pageChangeSub("Debiteurs");
                 this.props.history.push("/dashboard/debiteurs");
@@ -114,7 +114,7 @@ class Formulairedebiteur extends Component {
   componentDidMount() {
     const debiteurId = this.props.debiteurId;
     axios
-      .get(`${process.env.REACT_APP_API}/api/debiteurs`)
+      .get("http://localhost:4848/api/debiteurs")
       .then(response => {
         this.setState({
           // returns target debiteur
@@ -142,7 +142,7 @@ class Formulairedebiteur extends Component {
             </NavLink>
             <h1 className="titre1">Créer un nouveau débiteur</h1>
             <h2 className="compagnietitre">
-              Compagnie {this.state.denomination_sociale}
+              {this.state.denomination_sociale}
             </h2>
           </div>
 
@@ -303,7 +303,7 @@ class Formulairedebiteur extends Component {
           <div className="title_créancier pl4">
             <h1 className="titre1">Informations sur les débiteurs</h1>
             <h2 className="compagnietitre">
-              Compagnie {this.state.targetDebiteur[0].denomination_sociale}
+              {this.state.targetDebiteur[0].denomination_sociale}
             </h2>
           </div>
 
