@@ -152,7 +152,7 @@ class Formulairecreancier extends Component {
             </NavLink>
             <h1 className="titre1">Créer un nouveau créancier</h1>
             <h2 className="compagnietitre">
-              Compagnie {this.state.denomination_sociale}
+              {this.state.denomination_sociale}
             </h2>
           </div>
 
@@ -349,7 +349,7 @@ class Formulairecreancier extends Component {
           <div className="title_créancier pl4">
             <h1 className="titre1">Informations sur les créanciers</h1>
             <h2 className="compagnietitre">
-              Compagnie {this.state.targetCreancier[0].denomination_sociale}
+              {this.state.targetCreancier[0].denomination_sociale}
             </h2>
           </div>
 

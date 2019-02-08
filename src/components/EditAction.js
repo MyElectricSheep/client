@@ -230,10 +230,11 @@ class EditAction extends Component {
     }
 
     today = dd + "/" + mm + "/" + yyyy; // date for the word document
-    let today_file = dd + "-" + mm + "-" + yyyy; // date for the file name
+    // let today_file = dd + "-" + mm + "-" + yyyy; // date for the file name
+    let today_file = yyyy + mm + dd; // date for the file name
     let creancier_filename = this.props.creancier;
     let debiteur_filename = this.props.debiteur;
-    let nom = `${today_file} - Mise en demeure - ${creancier_filename} contre ${debiteur_filename}.docx`;
+    let nom = `${today_file} - Mise en demeure - ${creancier_filename} c. ${debiteur_filename}.docx`;
     Axios.get(
       `${process.env.REACT_APP_API}/api/documents/createMed/${
         this.props.actionId
@@ -264,10 +265,11 @@ class EditAction extends Component {
     }
 
     today = dd + "/" + mm + "/" + yyyy; // date for the word document
-    let today_file = dd + "-" + mm + "-" + yyyy; // date for the file name
+    // let today_file = dd + "-" + mm + "-" + yyyy; // date for the file name
+    let today_file = yyyy + mm + dd; // date for the file name
     let creancier_filename = this.props.creancier;
     let debiteur_filename = this.props.debiteur;
-    let nom = `${today_file} - Injonction de payer - ${creancier_filename} contre ${debiteur_filename}.docx`;
+    let nom = `${today_file} - Injonction de payer - ${creancier_filename} c. ${debiteur_filename}.docx`;
     Axios.get(
       `${process.env.REACT_APP_API}/api/documents/createInjonction/${
         this.props.actionId
@@ -298,10 +300,11 @@ class EditAction extends Component {
     }
 
     today = dd + "/" + mm + "/" + yyyy; // date for the word document
-    let today_file = dd + "-" + mm + "-" + yyyy; // date for the file name
+    // let today_file = dd + "-" + mm + "-" + yyyy; // date for the file name
+    let today_file = yyyy + mm + dd; // date for the file name
     let creancier_filename = this.props.creancier;
     let debiteur_filename = this.props.debiteur;
-    let nom = `${today_file} - Tableau de calcul des intérêts - ${creancier_filename} contre ${debiteur_filename}.docx`;
+    let nom = `${today_file} - Calcul intérêts - ${creancier_filename} c. ${debiteur_filename}.docx`;
     Axios.get(
       `${process.env.REACT_APP_API}/api/documents/createRecap/${
         this.props.actionId
