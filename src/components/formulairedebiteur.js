@@ -47,7 +47,7 @@ class Formulairedebiteur extends Component {
           label: "Oui",
           onClick: () =>
             axios
-              .post("http://localhost:4848/api/debiteurs", this.state)
+              .post(`${process.env.REACT_APP_API}/api/debiteurs`, this.state)
               .then(response => {
                 this.props.pageChangeSub("Debiteurs");
                 this.props.history.push("/dashboard/debiteurs");
@@ -76,7 +76,10 @@ class Formulairedebiteur extends Component {
           label: "Oui",
           onClick: () =>
             axios
-              .put(`http://localhost:4848/api/debiteurs/${id}`, this.state)
+              .put(
+                `${process.env.REACT_APP_API}/api/debiteurs/${id}`,
+                this.state
+              )
               .then(response => {
                 this.props.pageChangeSub("Debiteurs");
                 this.props.history.push("/dashboard/debiteurs");
@@ -114,7 +117,7 @@ class Formulairedebiteur extends Component {
   componentDidMount() {
     const debiteurId = this.props.debiteurId;
     axios
-      .get("http://localhost:4848/api/debiteurs")
+      .get(`${process.env.REACT_APP_API}/api/debiteurs`)
       .then(response => {
         this.setState({
           // returns target debiteur
@@ -142,7 +145,7 @@ class Formulairedebiteur extends Component {
             </NavLink>
             <h1 className="titre1">Créer un nouveau débiteur</h1>
             <h2 className="compagnietitre">
-              {this.state.denomination_sociale}
+              Compagnie {this.state.denomination_sociale}
             </h2>
           </div>
 
@@ -303,7 +306,7 @@ class Formulairedebiteur extends Component {
           <div className="title_créancier pl4">
             <h1 className="titre1">Informations sur les débiteurs</h1>
             <h2 className="compagnietitre">
-              {this.state.targetDebiteur[0].denomination_sociale}
+              Compagnie {this.state.targetDebiteur[0].denomination_sociale}
             </h2>
           </div>
 

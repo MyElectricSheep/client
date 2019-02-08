@@ -230,16 +230,23 @@ class EditAction extends Component {
     }
 
     today = dd + "/" + mm + "/" + yyyy; // date for the word document
-    let today_file = yyyy + mm +  dd; // date for the file name
+    let today_file = dd + "-" + mm + "-" + yyyy; // date for the file name
     let creancier_filename = this.props.creancier;
     let debiteur_filename = this.props.debiteur;
-    let nom = `${today_file} - Mise en demeure - ${creancier_filename} c. ${debiteur_filename}.docx`;
+    let nom = `${today_file} - Mise en demeure - ${creancier_filename} contre ${debiteur_filename}.docx`;
     Axios.get(
-      `http://localhost:4848/api/documents/createMed/${this.props.actionId}`
-    ).then(data => window.open(`http://localhost:4848/documents/${nom}`));
-    Axios.put(`http://localhost:4848/api/actions/${this.props.actionId}`, {
-      option_1: `http://localhost:4848/documents/${nom}`
-    });
+      `${process.env.REACT_APP_API}/api/documents/createMed/${
+        this.props.actionId
+      }`
+    ).then(data =>
+      window.open(`https://arigoback.herokuapp.com/documents/${nom}`)
+    );
+    Axios.put(
+      `${process.env.REACT_APP_API}/api/actions/${this.props.actionId}`,
+      {
+        option_1: `https://arigoback.herokuapp.com/documents/${nom}`
+      }
+    );
   };
 
   handleInjonction = () => {
@@ -257,18 +264,23 @@ class EditAction extends Component {
     }
 
     today = dd + "/" + mm + "/" + yyyy; // date for the word document
-    let today_file = yyyy + mm +  dd; // date for the file name
+    let today_file = dd + "-" + mm + "-" + yyyy; // date for the file name
     let creancier_filename = this.props.creancier;
     let debiteur_filename = this.props.debiteur;
-    let nom = `${today_file} - Injonction de payer - ${creancier_filename} c. ${debiteur_filename}.docx`;
+    let nom = `${today_file} - Injonction de payer - ${creancier_filename} contre ${debiteur_filename}.docx`;
     Axios.get(
-      `http://localhost:4848/api/documents/createInjonction/${
+      `${process.env.REACT_APP_API}/api/documents/createInjonction/${
         this.props.actionId
       }`
-    ).then(data => window.open(`http://localhost:4848/documents/${nom}`));
-    Axios.put(`http://localhost:4848/api/actions/${this.props.actionId}`, {
-      option_2: `http://localhost:4848/documents/${nom}`
-    });
+    ).then(data =>
+      window.open(`https://arigoback.herokuapp.com/documents/${nom}`)
+    );
+    Axios.put(
+      `${process.env.REACT_APP_API}/api/actions/${this.props.actionId}`,
+      {
+        option_2: `https://arigoback.herokuapp.com/documents/${nom}`
+      }
+    );
   };
 
   handleRecap = () => {
@@ -286,16 +298,23 @@ class EditAction extends Component {
     }
 
     today = dd + "/" + mm + "/" + yyyy; // date for the word document
-    let today_file = yyyy + mm +  dd; // date for the file name
+    let today_file = dd + "-" + mm + "-" + yyyy; // date for the file name
     let creancier_filename = this.props.creancier;
     let debiteur_filename = this.props.debiteur;
-    let nom = `${today_file} - Calcul intérêts - ${creancier_filename} c. ${debiteur_filename}.docx`;
+    let nom = `${today_file} - Tableau de calcul des intérêts - ${creancier_filename} contre ${debiteur_filename}.docx`;
     Axios.get(
-      `http://localhost:4848/api/documents/createRecap/${this.props.actionId}`
-    ).then(data => window.open(`http://localhost:4848/documents/${nom}`));
-    Axios.put(`http://localhost:4848/api/actions/${this.props.actionId}`, {
-      option_3: `http://localhost:4848/documents/${nom}`
-    });
+      `${process.env.REACT_APP_API}/api/documents/createRecap/${
+        this.props.actionId
+      }`
+    ).then(data =>
+      window.open(`https://arigoback.herokuapp.com/documents/${nom}`)
+    );
+    Axios.put(
+      `${process.env.REACT_APP_API}/api/actions/${this.props.actionId}`,
+      {
+        option_3: `https://arigoback.herokuapp.com/documents/${nom}`
+      }
+    );
   };
 
   handleDelete = (id, denomination, type) => {
@@ -333,7 +352,7 @@ class EditAction extends Component {
         {
           label: "Oui",
           onClick: () =>
-            Axios.put(`http://localhost:4848/api/${type}/${id}`, {
+            Axios.put(`${process.env.REACT_APP_API}/api/${type}/${id}`, {
               active: "false"
             })
               .then(response => {
@@ -603,17 +622,20 @@ class EditAction extends Component {
           {
             label: "Oui",
             onClick: () =>
-              Axios.put(`http://localhost:4848/api/actions/${myActionId}`, {
-                honoraires: this.state.honoraires,
-                option_ttc_hono: this.state.TTCHono,
-                option_ttc_factures: this.state.TTC,
-                produits: this.state.produits,
-                services: this.state.services,
-                taux_interets: this.state.points,
-                date: this.state.date_fin,
-                calcul_solde_du: myFullCreanceHT, // full creance en HT
-                calcul_total_creance: myFullCreanceTTC // full creance en TTC
-              })
+              Axios.put(
+                `${process.env.REACT_APP_API}/api/actions/${myActionId}`,
+                {
+                  honoraires: this.state.honoraires,
+                  option_ttc_hono: this.state.TTCHono,
+                  option_ttc_factures: this.state.TTC,
+                  produits: this.state.produits,
+                  services: this.state.services,
+                  taux_interets: this.state.points,
+                  date: this.state.date_fin,
+                  calcul_solde_du: myFullCreanceHT, // full creance en HT
+                  calcul_total_creance: myFullCreanceTTC // full creance en TTC
+                }
+              )
                 .then(response => {
                   alert("Vos options ont bien été sauvegardées.");
                   console.log(response);
@@ -969,7 +991,7 @@ class EditAction extends Component {
   };
 
   componentDidMount() {
-    Axios.get("http://localhost:4848/api/actions")
+    Axios.get(`${process.env.REACT_APP_API}/api/actions`)
       .then(response => {
         this.setState({
           actionFiltered: response.data.filter(
@@ -981,7 +1003,7 @@ class EditAction extends Component {
       .catch(error => {
         console.log(error);
       });
-    Axios.get("http://localhost:4848/api/factures")
+    Axios.get(`${process.env.REACT_APP_API}/api/factures`)
       .then(response => {
         this.setState({
           facturesFiltered: response.data
@@ -1002,7 +1024,7 @@ class EditAction extends Component {
     //     }
     //   }
     // };
-    Axios.get("http://localhost:4848/api/acomptes")
+    Axios.get(`${process.env.REACT_APP_API}/api/acomptes`)
       .then(response => {
         this.setState({
           acomptesFiltered: response.data.filter(acompte => acompte.active)
@@ -1012,7 +1034,7 @@ class EditAction extends Component {
       .catch(error => {
         console.log(error);
       });
-    Axios.get("http://localhost:4848/api/avoirs")
+    Axios.get(`${process.env.REACT_APP_API}/api/avoirs`)
       .then(response => {
         this.setState({
           avoirsFiltered: response.data.filter(avoir => avoir.active),
@@ -1023,7 +1045,7 @@ class EditAction extends Component {
       .catch(error => {
         console.log(error);
       });
-    Axios.get("http://localhost:4848/api/partiels")
+    Axios.get(`${process.env.REACT_APP_API}/api/partiels`)
       .then(response => {
         this.setState({
           partielsFiltered: response.data.filter(partiel => partiel.active)
@@ -1033,7 +1055,7 @@ class EditAction extends Component {
       .catch(error => {
         console.log(error);
       });
-    Axios.get(`http://localhost:4848/api/actions/${this.props.actionId}`)
+    Axios.get(`${process.env.REACT_APP_API}/api/actions/${this.props.actionId}`)
       .then(response => {
         this.setState({
           currentActionWithAllInfo: response.data
@@ -1246,7 +1268,7 @@ class EditAction extends Component {
       this.state.isUpdated === false &&
       this.state.actionFiltered !== undefined
     ) {
-      Axios.get("http://localhost:4848/api/factures")
+      Axios.get(`${process.env.REACT_APP_API}/api/factures`)
         .then(response => {
           this.setState({
             facturesFiltered: response.data
@@ -1268,7 +1290,7 @@ class EditAction extends Component {
       //     }
       //   }
       // };
-      Axios.get("http://localhost:4848/api/acomptes")
+      Axios.get(`${process.env.REACT_APP_API}/api/acomptes`)
         .then(response => {
           this.setState({
             acomptesFiltered: response.data.filter(acompte => acompte.active),
@@ -1279,7 +1301,7 @@ class EditAction extends Component {
         .catch(error => {
           console.log(error);
         });
-      Axios.get("http://localhost:4848/api/avoirs")
+      Axios.get(`${process.env.REACT_APP_API}/api/avoirs`)
         .then(response => {
           this.setState({
             avoirsFiltered: response.data.filter(avoir => avoir.active),
@@ -1291,7 +1313,7 @@ class EditAction extends Component {
         .catch(error => {
           console.log(error);
         });
-      Axios.get("http://localhost:4848/api/partiels")
+      Axios.get(`${process.env.REACT_APP_API}/api/partiels`)
         .then(response => {
           this.setState({
             partielsFiltered: response.data.filter(partiel => partiel.active)
@@ -1302,7 +1324,7 @@ class EditAction extends Component {
           console.log(error);
         });
       Axios.get(
-        `http://localhost:4848/api/actions/${this.props.actionId}`
+        `${process.env.REACT_APP_API}/api/actions/${this.props.actionId}`
       ).then(response => {
         this.setState({
           currentActionWithAllInfo: response.data

@@ -52,7 +52,7 @@ class Formulairecreancier extends Component {
           label: "Oui",
           onClick: () =>
             axios
-              .post("http://localhost:4848/api/creanciers", this.state)
+              .post(`${process.env.REACT_APP_API}/api/creanciers`, this.state)
               .then(response => {
                 this.props.pageChangeSub("Creanciers");
                 this.props.history.push("/dashboard/creanciers");
@@ -82,7 +82,10 @@ class Formulairecreancier extends Component {
           label: "Oui",
           onClick: () =>
             axios
-              .put(`http://localhost:4848/api/creanciers/${id}`, this.state)
+              .put(
+                `${process.env.REACT_APP_API}/api/creanciers/${id}`,
+                this.state
+              )
               .then(response => {
                 this.props.pageChangeSub("Creanciers");
                 this.props.history.push("/dashboard/creanciers");
@@ -121,7 +124,7 @@ class Formulairecreancier extends Component {
   componentDidMount() {
     const creancierId = this.props.creancierId;
     axios
-      .get("http://localhost:4848/api/creanciers")
+      .get(`${process.env.REACT_APP_API}/api/creanciers`)
       .then(response => {
         this.setState({
           // returns target creancier
@@ -149,7 +152,7 @@ class Formulairecreancier extends Component {
             </NavLink>
             <h1 className="titre1">Créer un nouveau créancier</h1>
             <h2 className="compagnietitre">
-              {this.state.denomination_sociale}
+              Compagnie {this.state.denomination_sociale}
             </h2>
           </div>
 
@@ -346,7 +349,7 @@ class Formulairecreancier extends Component {
           <div className="title_créancier pl4">
             <h1 className="titre1">Informations sur les créanciers</h1>
             <h2 className="compagnietitre">
-              {this.state.targetCreancier[0].denomination_sociale}
+              Compagnie {this.state.targetCreancier[0].denomination_sociale}
             </h2>
           </div>
 
