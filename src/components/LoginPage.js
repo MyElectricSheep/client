@@ -33,7 +33,6 @@ class LoginPage extends React.Component {
 
   fakeLogin = (log, mdp) => {
     if (log === this.state.log && mdp === this.state.mdp) {
-      // this.props.pageChangeSub("moncompte");
       this.props.history.push("/dashboard/moncompte");
     } else {
       alert("Connexion refusée. Le mot de passe est invalide!");
@@ -45,8 +44,8 @@ class LoginPage extends React.Component {
       <div>
         <img className="contract" src={contract} alt="home page" />
         <div>
-          <h1 className="tc mt4 athelas navy f1"> Alexandra ARIGONI </h1>
-          <h2 className="tc nt3 athelas navy f2"> AVOCAT </h2>
+          <h1 className="tc mt4 athelas navy f1"> Perry Mason </h1>
+          <h2 className="tc nt3 athelas navy f2"> AVOCAT AUGMENTÉ </h2>
         </div>
 
         <div className="fl w-100 mt3 tc">
@@ -67,12 +66,9 @@ class LoginPage extends React.Component {
         </div>
 
         <div className="fl w-60 pa2 nt1" />
-        <div className="fl w-40 pa2 nt1">
-          {/* <p className="pointer f6"> Mot de passe oublié? </p> */}
-        </div>
+        <div className="fl w-40 pa2 nt1" />
 
         <div className="fl w-100 tc pt3">
-          {/* <NavLink to="/dashboard/moncompte"> */}
           <span
             className="f6 link dim br1 ph3 pv2 mt2 mb4 dib white bg-dark-blue"
             href="#0"
@@ -83,7 +79,6 @@ class LoginPage extends React.Component {
             {" "}
             Se connecter{" "}
           </span>
-          {/* </NavLink> */}
         </div>
       </div>
     );
