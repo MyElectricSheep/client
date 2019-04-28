@@ -43,6 +43,8 @@
 
 .entete {
   margin-left: 28%;
+  height: 28%;
+  width: 28%;
 }
 
 @media only screen and (max-width: 768px) {
@@ -80,16 +82,6 @@
   position: absolute;
   z-index: -1;
 }
-/* .inputfile + label {
-  font-size: 1.25em;
-  font-weight: 700;
-  color: white;
-  display: inline-block;
-} */
-
-/* 
-.inputfile + label {
-  cursor: pointer; /* "hand" cursor */
 
 .bg-dark-blue {
   background-color: #45445d;
