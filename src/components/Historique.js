@@ -179,7 +179,6 @@ class Historique extends React.Component {
           },
           {
             label: "Non"
-            // onClick: () => alert("Le créancier n'a pas été supprimé.")
           }
         ]
       });
@@ -195,12 +194,6 @@ class Historique extends React.Component {
                 active: "false"
               })
                 .then(response => {
-                  // const myActive = this.state.actionsActive.filter(
-                  //   a => a.id !== id
-                  // );
-                  // this.setState({
-                  //   actionsActive: myActive
-                  // });
                   Axios.get(`${process.env.REACT_APP_API}/api/actions`)
                     .then(response => {
                       this.setState({
