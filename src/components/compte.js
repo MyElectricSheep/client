@@ -1,14 +1,10 @@
 import React, { Component } from "react";
 import "./compte.css";
 import modifier from "./Icones_Arigoni/icone_modifier.png";
-import upload from "./Icones_Arigoni/icone_upload.png";
-// import signature from "./Icones_Arigoni/signature.png";
 import Axios from "axios";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
-// import Formulairecompte from "./formulairecompte";
 import { NavLink } from "react-router-dom";
-import valider from "./Icones_Arigoni/valider.svg";
 import entete from "./images/entete.png";
 
 class Compte extends Component {
@@ -55,17 +51,6 @@ class Compte extends Component {
     console.log(formData);
     const config = {
       headers: {
-        // app.post("/dashboard/entete", upload.single("entete"), (req, res, next) => {
-        //   console.log(req.files);
-        //   for (f of req.files)
-        //     fs.rename(f.path, "public/images/" + f.originalname, function(err) {
-        //       if (err) {
-        //         res.send("problème durant le déplacement");
-        //       } else {
-        //         res.send("Fichier uploadé avec succès");
-        //       }
-        //     });
-        // });
         "content-type": "multipart/form-data"
       }
     };
@@ -80,7 +65,6 @@ class Compte extends Component {
 
   onChange = e => {
     this.setState({ file: e.target.files[0] });
-    // setTimeout(this.onFormSubmitSignature(), 5000);
   };
 
   reloadNow = () => {
@@ -105,7 +89,10 @@ class Compte extends Component {
         {
           label: "Oui",
           onClick: () =>
-            Axios.put(`${process.env.REACT_APP_API}/api/cabinet/${myId}`, this.state)
+            Axios.put(
+              `${process.env.REACT_APP_API}/api/cabinet/${myId}`,
+              this.state
+            )
               .then(response => {
                 this.reloadNow(myId);
                 alert(`Vos informations ont bien été modifiées.`);
@@ -117,7 +104,6 @@ class Compte extends Component {
         },
         {
           label: "Non"
-          // onClick: () => alert("Le créancier n'a pas été supprimé.")
         }
       ]
     });
@@ -145,7 +131,6 @@ class Compte extends Component {
     const infosCompte = this.state.data;
     return (
       <div className="fl w-100 pt3">
-        {/* ce que le modèle va donner */}
         <div className="fl w-100 pt3 stylish-cab mt4">
           <div className="tc">
             <span className="f1 b title-seysey">Cabinet {infosCompte.nom}</span>
